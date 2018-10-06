@@ -4,6 +4,15 @@ entity ReinfControle (rif_controle) {
     tpAmbiente String maxlength(1)
 }
 
+entity ReinfItemControle (rif_item_cntr) {
+
+}
+
+entity ReinfEvento (rif_evento) {
+	codEvento String maxlength(30),
+    descEvento String maxlength(200)
+}
+
 entity ReinfStatusControle (rif_status_ctrl) {
 	codStatus String required maxlength(30),
     descr String maxlength(200)
@@ -29,5 +38,11 @@ entity Empresa(gsf_empresa) {
 relationship ManyToOne {
 	Empresa {empresaPai} to Empresa,
     ReinfControle{empresa} to Empresa,
-    ReinfControle{status} to ReinfStatusControle
+    ReinfControle{status} to ReinfStatusControle,
+    ReinfItemControle{evento} to ReinfEvento,
+    ReinfItemControle{status} to ReinfStatusControle
+}
+
+relationship OneToMany {
+	ReinfControle{itens} to ReinfItemControle{controle}
 }
