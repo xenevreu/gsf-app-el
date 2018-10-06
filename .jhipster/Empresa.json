@@ -97,7 +97,7 @@
         }
     ],
     "changelogDate": "20181006010130",
-    "entityTableName": "empresa",
+    "entityTableName": "gsf_empresa",
     "dto": "no",
     "pagination": "no",
     "service": "no",

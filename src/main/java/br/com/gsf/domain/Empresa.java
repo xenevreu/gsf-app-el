@@ -16,7 +16,7 @@ import java.util.Objects;
  * A Empresa.
  */
 @Entity
-@Table(name = "empresa")
+@Table(name = "gsf_empresa")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "empresa")
 public class Empresa implements Serializable {

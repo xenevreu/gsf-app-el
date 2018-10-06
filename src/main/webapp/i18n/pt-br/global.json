@@ -9,6 +9,7 @@
                 "main": "Entidades",
                 "reinfControle": "Reinf Controle",
                 "empresa": "Empresa",
+                "reinfStatusControle": "Reinf Status Controle",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

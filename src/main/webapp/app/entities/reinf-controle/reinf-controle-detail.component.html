@@ -5,9 +5,29 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gsfappelApp.reinfControle.dtIni">Dt Ini</span></dt>
+                <dd>
+                    <span>{{reinfControle.dtIni}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.reinfControle.dtFim">Dt Fim</span></dt>
+                <dd>
+                    <span>{{reinfControle.dtFim}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.reinfControle.tpAmbiente">Tp Ambiente</span></dt>
+                <dd>
+                    <span>{{reinfControle.tpAmbiente}}</span>
+                </dd>
                 <dt><span jhiTranslate="gsfappelApp.reinfControle.empresa">Empresa</span></dt>
                 <dd>
-                    <span>{{reinfControle.empresa}}</span>
+                    <div *ngIf="reinfControle.empresa">
+                        <a [routerLink]="['/empresa', reinfControle.empresa?.id, 'view']">{{reinfControle.empresa?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.reinfControle.status">Status</span></dt>
+                <dd>
+                    <div *ngIf="reinfControle.status">
+                        <a [routerLink]="['/reinf-status-controle', reinfControle.status?.id, 'view']">{{reinfControle.status?.id}}</a>
+                    </div>
                 </dd>
             </dl>
 
