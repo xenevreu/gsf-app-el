@@ -1,0 +1,33 @@
+{
+    "name": "ReinfItemControle",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "evento",
+            "otherEntityName": "reinfEvento",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "status",
+            "otherEntityName": "reinfStatusControle",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "controle",
+            "otherEntityName": "reinfControle",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181006024331",
+    "entityTableName": "rif_item_cntr",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

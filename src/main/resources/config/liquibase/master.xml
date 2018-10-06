@@ -8,8 +8,11 @@
     <include file="config/liquibase/changelog/20181006010129_added_entity_ReinfControle.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181006010130_added_entity_Empresa.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181006015006_added_entity_ReinfStatusControle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006024331_added_entity_ReinfItemControle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006024332_added_entity_ReinfEvento.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20181006010130_added_entity_constraints_Empresa.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181006010129_added_entity_constraints_ReinfControle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006024331_added_entity_constraints_ReinfItemControle.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

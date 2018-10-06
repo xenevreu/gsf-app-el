@@ -20,6 +20,12 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
+            "relationshipName": "itens",
+            "otherEntityName": "reinfItemControle",
+            "otherEntityRelationshipName": "controle"
+        },
+        {
             "relationshipType": "many-to-one",
             "relationshipName": "empresa",
             "otherEntityName": "empresa",

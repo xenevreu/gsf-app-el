@@ -10,6 +10,8 @@
                 "reinfControle": "Reinf Controle",
                 "empresa": "Empresa",
                 "reinfStatusControle": "Reinf Status Controle",
+                "reinfItemControle": "Reinf Item Controle",
+                "reinfEvento": "Reinf Evento",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

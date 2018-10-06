@@ -1,0 +1,24 @@
+
+{
+    "gsfappelApp": {
+        "reinfEvento" : {
+            "home": {
+                "title": "Reinf Eventos",
+                "createLabel": "Criar novo Reinf Evento",
+                "createOrEditLabel": "Criar ou editar Reinf Evento",
+                "search": "Pesquisar por Reinf Evento"
+            },
+            "created": "Um novo Reinf Evento foi criado com o identificador {{ param }}",
+            "updated": "Um Reinf Evento foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Reinf Evento foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Reinf Evento {{ id }}?"
+            },
+            "detail": {
+                "title": "Reinf Evento"
+            },
+            "codEvento": "Cod Evento",
+            "descEvento": "Desc Evento"
+        }
+    }
+}

@@ -44,6 +44,9 @@ public class CacheConfiguration {
             cm.createCache(br.com.gsf.domain.ReinfControle.class.getName(), jcacheConfiguration);
             cm.createCache(br.com.gsf.domain.Empresa.class.getName(), jcacheConfiguration);
             cm.createCache(br.com.gsf.domain.ReinfStatusControle.class.getName(), jcacheConfiguration);
+            cm.createCache(br.com.gsf.domain.ReinfControle.class.getName() + ".itens", jcacheConfiguration);
+            cm.createCache(br.com.gsf.domain.ReinfItemControle.class.getName(), jcacheConfiguration);
+            cm.createCache(br.com.gsf.domain.ReinfEvento.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

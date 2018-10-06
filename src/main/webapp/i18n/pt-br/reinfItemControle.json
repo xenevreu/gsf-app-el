@@ -1,0 +1,25 @@
+
+{
+    "gsfappelApp": {
+        "reinfItemControle" : {
+            "home": {
+                "title": "Reinf Item Controles",
+                "createLabel": "Criar novo Reinf Item Controle",
+                "createOrEditLabel": "Criar ou editar Reinf Item Controle",
+                "search": "Pesquisar por Reinf Item Controle"
+            },
+            "created": "Um novo Reinf Item Controle foi criado com o identificador {{ param }}",
+            "updated": "Um Reinf Item Controle foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Reinf Item Controle foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Reinf Item Controle {{ id }}?"
+            },
+            "detail": {
+                "title": "Reinf Item Controle"
+            },
+            "evento": "Evento",
+            "status": "Status",
+            "controle": "Controle"
+        }
+    }
+}
