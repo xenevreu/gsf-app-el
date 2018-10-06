@@ -1,0 +1,36 @@
+
+{
+    "gsfappelApp": {
+        "empresa" : {
+            "home": {
+                "title": "Empresas",
+                "createLabel": "Criar novo Empresa",
+                "createOrEditLabel": "Criar ou editar Empresa",
+                "search": "Pesquisar por Empresa"
+            },
+            "created": "Um novo Empresa foi criado com o identificador {{ param }}",
+            "updated": "Um Empresa foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Empresa foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Empresa {{ id }}?"
+            },
+            "detail": {
+                "title": "Empresa"
+            },
+            "nomeEmpresa": "Nome Empresa",
+            "dtInclusao": "Dt Inclusao",
+            "usuInclusao": "Usu Inclusao",
+            "dtUltAlteracao": "Dt Ult Alteracao",
+            "usuUltAlteracao": "Usu Ult Alteracao",
+            "cnpj": "Cnpj",
+            "siglaLa": "Sigla La",
+            "conteudoCodigo": "Conteudo Codigo",
+            "idUf": "Id Uf",
+            "nomeFantasia": "Nome Fantasia",
+            "idLocalCentral": "Id Local Central",
+            "dsLogo": "Ds Logo",
+            "caminhoLog": "Caminho Log",
+            "empresaPai": "Empresa Pai"
+        }
+    }
+}

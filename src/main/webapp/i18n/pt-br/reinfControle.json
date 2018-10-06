@@ -1,0 +1,23 @@
+
+{
+    "gsfappelApp": {
+        "reinfControle" : {
+            "home": {
+                "title": "Reinf Controles",
+                "createLabel": "Criar novo Reinf Controle",
+                "createOrEditLabel": "Criar ou editar Reinf Controle",
+                "search": "Pesquisar por Reinf Controle"
+            },
+            "created": "Um novo Reinf Controle foi criado com o identificador {{ param }}",
+            "updated": "Um Reinf Controle foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Reinf Controle foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Reinf Controle {{ id }}?"
+            },
+            "detail": {
+                "title": "Reinf Controle"
+            },
+            "empresa": "Empresa"
+        }
+    }
+}

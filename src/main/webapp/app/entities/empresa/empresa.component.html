@@ -1,0 +1,99 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gsfappelApp.empresa.home.title">Empresas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-empresa" [routerLink]="['/empresa/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="gsfappelApp.empresa.home.createLabel">
+            Create new Empresa
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gsfappelApp.empresa.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="empresas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.nomeEmpresa">Nome Empresa</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.dtInclusao">Dt Inclusao</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.usuInclusao">Usu Inclusao</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.dtUltAlteracao">Dt Ult Alteracao</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.usuUltAlteracao">Usu Ult Alteracao</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.cnpj">Cnpj</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.siglaLa">Sigla La</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.conteudoCodigo">Conteudo Codigo</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.idUf">Id Uf</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.nomeFantasia">Nome Fantasia</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.idLocalCentral">Id Local Central</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.dsLogo">Ds Logo</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.caminhoLog">Caminho Log</span></th>
+            <th><span jhiTranslate="gsfappelApp.empresa.empresaPai">Empresa Pai</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empresa of empresas ;trackBy: trackId">
+                <td><a [routerLink]="['/empresa', empresa.id, 'view' ]">{{empresa.id}}</a></td>
+                <td>{{empresa.nomeEmpresa}}</td>
+                <td>{{empresa.dtInclusao | date:'medium'}}</td>
+                <td>{{empresa.usuInclusao}}</td>
+                <td>{{empresa.dtUltAlteracao | date:'medium'}}</td>
+                <td>{{empresa.usuUltAlteracao | date:'medium'}}</td>
+                <td>{{empresa.cnpj}}</td>
+                <td>{{empresa.siglaLa}}</td>
+                <td>{{empresa.conteudoCodigo}}</td>
+                <td>{{empresa.idUf}}</td>
+                <td>{{empresa.nomeFantasia}}</td>
+                <td>{{empresa.idLocalCentral}}</td>
+                <td>{{empresa.dsLogo}}</td>
+                <td>{{empresa.caminhoLog}}</td>
+                <td>
+                    <div *ngIf="empresa.empresaPai">
+                        <a [routerLink]="['../empresa', empresa.empresaPai?.id, 'view' ]" >{{empresa.empresaPai?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/empresa', empresa.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/empresa', empresa.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empresa/'+ empresa.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
