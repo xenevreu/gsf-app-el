@@ -17,7 +17,11 @@
             "detail": {
                 "title": "Reinf Controle"
             },
-            "empresa": "Empresa"
+            "dtIni": "Dt Ini",
+            "dtFim": "Dt Fim",
+            "tpAmbiente": "Tp Ambiente",
+            "empresa": "Empresa",
+            "status": "Status"
         }
     }
 }

@@ -9,10 +9,10 @@
     <changeSet id="20181006010130-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="empresa_pai_id"
-                                 baseTableName="empresa"
+                                 baseTableName="gsf_empresa"
                                  constraintName="fk_empresa_empresa_pai_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="empresa"/>
+                                 referencedTableName="gsf_empresa"/>
 
     </changeSet>
 </databaseChangeLog>

@@ -10,11 +10,45 @@
                         [(ngModel)]="reinfControle.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfControle.empresa" for="field_empresa">Empresa</label>
-                    <input type="text" class="form-control" name="empresa" id="field_empresa"
-                        [(ngModel)]="reinfControle.empresa" />
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfControle.dtIni" for="field_dtIni">Dt Ini</label>
+                    <div class="d-flex">
+                        <input id="field_dtIni" type="datetime-local" class="form-control" name="dtIni" [(ngModel)]="dtIni"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfControle.dtFim" for="field_dtFim">Dt Fim</label>
+                    <div class="d-flex">
+                        <input id="field_dtFim" type="datetime-local" class="form-control" name="dtFim" [(ngModel)]="dtFim"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfControle.tpAmbiente" for="field_tpAmbiente">Tp Ambiente</label>
+                    <input type="text" class="form-control" name="tpAmbiente" id="field_tpAmbiente"
+                        [(ngModel)]="reinfControle.tpAmbiente" maxlength="1"/>
+                    <div [hidden]="!(editForm.controls.tpAmbiente?.dirty && editForm.controls.tpAmbiente?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tpAmbiente?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                        This field cannot be longer than 1 characters.
+                        </small>
+                    </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfControle.empresa" for="field_empresa">Empresa</label>
+                    <select class="form-control" id="field_empresa" name="empresa" [(ngModel)]="reinfControle.empresa" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="empresaOption.id === reinfControle.empresa?.id ? reinfControle.empresa : empresaOption" *ngFor="let empresaOption of empresas; trackBy: trackEmpresaById">{{empresaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfControle.status" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" [(ngModel)]="reinfControle.status" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reinfStatusControleOption.id === reinfControle.status?.id ? reinfControle.status : reinfStatusControleOption" *ngFor="let reinfStatusControleOption of reinfstatuscontroles; trackBy: trackReinfStatusControleById">{{reinfStatusControleOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

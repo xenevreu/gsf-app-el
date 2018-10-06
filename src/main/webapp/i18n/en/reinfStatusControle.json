@@ -1,0 +1,24 @@
+
+{
+    "gsfappelApp": {
+        "reinfStatusControle" : {
+            "home": {
+                "title": "Reinf Status Controles",
+                "createLabel": "Create a new Reinf Status Controle",
+                "createOrEditLabel": "Create or edit a Reinf Status Controle",
+                "search": "Search for Reinf Status Controle"
+            },
+            "created": "A new Reinf Status Controle is created with identifier {{ param }}",
+            "updated": "A Reinf Status Controle is updated with identifier {{ param }}",
+            "deleted": "A Reinf Status Controle is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Reinf Status Controle {{ id }}?"
+            },
+            "detail": {
+                "title": "Reinf Status Controle"
+            },
+            "codStatus": "Cod Status",
+            "descr": "Descr"
+        }
+    }
+}

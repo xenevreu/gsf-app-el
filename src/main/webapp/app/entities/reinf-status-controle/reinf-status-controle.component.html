@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="gsfappelApp.reinfControle.home.title">Reinf Controles</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reinf-controle" [routerLink]="['/reinf-controle/new']">
+        <span jhiTranslate="gsfappelApp.reinfStatusControle.home.title">Reinf Status Controles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reinf-status-controle" [routerLink]="['/reinf-status-controle/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span class="hidden-sm-down"  jhiTranslate="gsfappelApp.reinfControle.home.createLabel">
-            Create new Reinf Controle
+            <span class="hidden-sm-down"  jhiTranslate="gsfappelApp.reinfStatusControle.home.createLabel">
+            Create new Reinf Status Controle
             </span>
         </button>
     </h2>
@@ -13,7 +13,7 @@
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gsfappelApp.reinfControle.home.search' | translate }}">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gsfappelApp.reinfStatusControle.home.search' | translate }}">
                     <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon [icon]="'search'"></fa-icon>
                     </button>
@@ -25,51 +25,37 @@
         </div>
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="reinfControles">
+    <div class="table-responsive" *ngIf="reinfStatusControles">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gsfappelApp.reinfControle.dtIni">Dt Ini</span></th>
-            <th><span jhiTranslate="gsfappelApp.reinfControle.dtFim">Dt Fim</span></th>
-            <th><span jhiTranslate="gsfappelApp.reinfControle.tpAmbiente">Tp Ambiente</span></th>
-            <th><span jhiTranslate="gsfappelApp.reinfControle.empresa">Empresa</span></th>
-            <th><span jhiTranslate="gsfappelApp.reinfControle.status">Status</span></th>
+            <th><span jhiTranslate="gsfappelApp.reinfStatusControle.codStatus">Cod Status</span></th>
+            <th><span jhiTranslate="gsfappelApp.reinfStatusControle.descr">Descr</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let reinfControle of reinfControles ;trackBy: trackId">
-                <td><a [routerLink]="['/reinf-controle', reinfControle.id, 'view' ]">{{reinfControle.id}}</a></td>
-                <td>{{reinfControle.dtIni | date:'medium'}}</td>
-                <td>{{reinfControle.dtFim | date:'medium'}}</td>
-                <td>{{reinfControle.tpAmbiente}}</td>
-                <td>
-                    <div *ngIf="reinfControle.empresa">
-                        <a [routerLink]="['../empresa', reinfControle.empresa?.id, 'view' ]" >{{reinfControle.empresa?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="reinfControle.status">
-                        <a [routerLink]="['../reinf-status-controle', reinfControle.status?.id, 'view' ]" >{{reinfControle.status?.id}}</a>
-                    </div>
-                </td>
+            <tr *ngFor="let reinfStatusControle of reinfStatusControles ;trackBy: trackId">
+                <td><a [routerLink]="['/reinf-status-controle', reinfStatusControle.id, 'view' ]">{{reinfStatusControle.id}}</a></td>
+                <td>{{reinfStatusControle.codStatus}}</td>
+                <td>{{reinfStatusControle.descr}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['/reinf-controle', reinfControle.id, 'view' ]"
+                                [routerLink]="['/reinf-status-controle', reinfStatusControle.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/reinf-controle', reinfControle.id, 'edit']"
+                                [routerLink]="['/reinf-status-controle', reinfStatusControle.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'reinf-controle/'+ reinfControle.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'reinf-status-controle/'+ reinfStatusControle.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

@@ -2,13 +2,38 @@
     "name": "ReinfControle",
     "fields": [
         {
-            "fieldName": "empresa",
-            "fieldType": "String"
+            "fieldName": "dtIni",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dtFim",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tpAmbiente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "empresa",
+            "otherEntityName": "empresa",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "status",
+            "otherEntityName": "reinfStatusControle",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20181006010129",
-    "entityTableName": "reinf_controle",
+    "entityTableName": "rif_controle",
     "dto": "no",
     "pagination": "no",
     "service": "no",

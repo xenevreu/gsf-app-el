@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,8 +45,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = GsfappelApp.class)
 public class ReinfControleResourceIntTest {
 
-    private static final String DEFAULT_EMPRESA = "AAAAAAAAAA";
-    private static final String UPDATED_EMPRESA = "BBBBBBBBBB";
+    private static final Instant DEFAULT_DT_INI = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DT_INI = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_DT_FIM = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DT_FIM = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_TP_AMBIENTE = "A";
+    private static final String UPDATED_TP_AMBIENTE = "B";
 
     @Autowired
     private ReinfControleRepository reinfControleRepository;
@@ -92,7 +100,9 @@ public class ReinfControleResourceIntTest {
      */
     public static ReinfControle createEntity(EntityManager em) {
         ReinfControle reinfControle = new ReinfControle()
-            .empresa(DEFAULT_EMPRESA);
+            .dtIni(DEFAULT_DT_INI)
+            .dtFim(DEFAULT_DT_FIM)
+            .tpAmbiente(DEFAULT_TP_AMBIENTE);
         return reinfControle;
     }
 
@@ -116,7 +126,9 @@ public class ReinfControleResourceIntTest {
         List<ReinfControle> reinfControleList = reinfControleRepository.findAll();
         assertThat(reinfControleList).hasSize(databaseSizeBeforeCreate + 1);
         ReinfControle testReinfControle = reinfControleList.get(reinfControleList.size() - 1);
-        assertThat(testReinfControle.getEmpresa()).isEqualTo(DEFAULT_EMPRESA);
+        assertThat(testReinfControle.getDtIni()).isEqualTo(DEFAULT_DT_INI);
+        assertThat(testReinfControle.getDtFim()).isEqualTo(DEFAULT_DT_FIM);
+        assertThat(testReinfControle.getTpAmbiente()).isEqualTo(DEFAULT_TP_AMBIENTE);
 
         // Validate the ReinfControle in Elasticsearch
         verify(mockReinfControleSearchRepository, times(1)).save(testReinfControle);
@@ -155,7 +167,9 @@ public class ReinfControleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(reinfControle.getId().intValue())))
-            .andExpect(jsonPath("$.[*].empresa").value(hasItem(DEFAULT_EMPRESA.toString())));
+            .andExpect(jsonPath("$.[*].dtIni").value(hasItem(DEFAULT_DT_INI.toString())))
+            .andExpect(jsonPath("$.[*].dtFim").value(hasItem(DEFAULT_DT_FIM.toString())))
+            .andExpect(jsonPath("$.[*].tpAmbiente").value(hasItem(DEFAULT_TP_AMBIENTE.toString())));
     }
     
     @Test
@@ -169,7 +183,9 @@ public class ReinfControleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(reinfControle.getId().intValue()))
-            .andExpect(jsonPath("$.empresa").value(DEFAULT_EMPRESA.toString()));
+            .andExpect(jsonPath("$.dtIni").value(DEFAULT_DT_INI.toString()))
+            .andExpect(jsonPath("$.dtFim").value(DEFAULT_DT_FIM.toString()))
+            .andExpect(jsonPath("$.tpAmbiente").value(DEFAULT_TP_AMBIENTE.toString()));
     }
 
     @Test
@@ -193,7 +209,9 @@ public class ReinfControleResourceIntTest {
         // Disconnect from session so that the updates on updatedReinfControle are not directly saved in db
         em.detach(updatedReinfControle);
         updatedReinfControle
-            .empresa(UPDATED_EMPRESA);
+            .dtIni(UPDATED_DT_INI)
+            .dtFim(UPDATED_DT_FIM)
+            .tpAmbiente(UPDATED_TP_AMBIENTE);
 
         restReinfControleMockMvc.perform(put("/api/reinf-controles")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -204,7 +222,9 @@ public class ReinfControleResourceIntTest {
         List<ReinfControle> reinfControleList = reinfControleRepository.findAll();
         assertThat(reinfControleList).hasSize(databaseSizeBeforeUpdate);
         ReinfControle testReinfControle = reinfControleList.get(reinfControleList.size() - 1);
-        assertThat(testReinfControle.getEmpresa()).isEqualTo(UPDATED_EMPRESA);
+        assertThat(testReinfControle.getDtIni()).isEqualTo(UPDATED_DT_INI);
+        assertThat(testReinfControle.getDtFim()).isEqualTo(UPDATED_DT_FIM);
+        assertThat(testReinfControle.getTpAmbiente()).isEqualTo(UPDATED_TP_AMBIENTE);
 
         // Validate the ReinfControle in Elasticsearch
         verify(mockReinfControleSearchRepository, times(1)).save(testReinfControle);
@@ -264,7 +284,9 @@ public class ReinfControleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(reinfControle.getId().intValue())))
-            .andExpect(jsonPath("$.[*].empresa").value(hasItem(DEFAULT_EMPRESA.toString())));
+            .andExpect(jsonPath("$.[*].dtIni").value(hasItem(DEFAULT_DT_INI.toString())))
+            .andExpect(jsonPath("$.[*].dtFim").value(hasItem(DEFAULT_DT_FIM.toString())))
+            .andExpect(jsonPath("$.[*].tpAmbiente").value(hasItem(DEFAULT_TP_AMBIENTE.toString())));
     }
 
     @Test

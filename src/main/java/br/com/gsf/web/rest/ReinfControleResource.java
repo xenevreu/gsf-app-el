@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class ReinfControleResource {
      */
     @PostMapping("/reinf-controles")
     @Timed
-    public ResponseEntity<ReinfControle> createReinfControle(@RequestBody ReinfControle reinfControle) throws URISyntaxException {
+    public ResponseEntity<ReinfControle> createReinfControle(@Valid @RequestBody ReinfControle reinfControle) throws URISyntaxException {
         log.debug("REST request to save ReinfControle : {}", reinfControle);
         if (reinfControle.getId() != null) {
             throw new BadRequestAlertException("A new reinfControle cannot already have an ID", ENTITY_NAME, "idexists");
@@ -74,7 +75,7 @@ public class ReinfControleResource {
      */
     @PutMapping("/reinf-controles")
     @Timed
-    public ResponseEntity<ReinfControle> updateReinfControle(@RequestBody ReinfControle reinfControle) throws URISyntaxException {
+    public ResponseEntity<ReinfControle> updateReinfControle(@Valid @RequestBody ReinfControle reinfControle) throws URISyntaxException {
         log.debug("REST request to update ReinfControle : {}", reinfControle);
         if (reinfControle.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

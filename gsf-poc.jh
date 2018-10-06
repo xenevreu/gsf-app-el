@@ -1,16 +1,12 @@
-entity ReinfControle(tb_efd_rif_controle) {
+entity ReinfControle (rif_controle) {
 	dtIni Instant,
     dtFim Instant,
-    tpAmbiente Ambiente
+    tpAmbiente String maxlength(1)
 }
 
-entity ReinfStatusControle(TbEfdRifStatusCtrl) {
+entity ReinfStatusControle (rif_status_ctrl) {
 	codStatus String required maxlength(30),
     descr String maxlength(200)
-}
-
-enum Ambiente {
-	'1','2'
 }
 
 entity Empresa(gsf_empresa) {
