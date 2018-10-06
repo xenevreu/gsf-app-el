@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ReinfItemControle.
+    -->
+    <changeSet id="20181006024331-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="evento_id"
+                                 baseTableName="rif_item_cntr"
+                                 constraintName="reinf_item_con_evento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rif_evento"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="rif_item_cntr"
+                                 constraintName="reinf_item_con_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rif_status_ctrl"/>
+
+        <addForeignKeyConstraint baseColumnNames="controle_id"
+                                 baseTableName="rif_item_cntr"
+                                 constraintName="reinf_item_con_controle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rif_controle"/>
+
+    </changeSet>
+</databaseChangeLog>

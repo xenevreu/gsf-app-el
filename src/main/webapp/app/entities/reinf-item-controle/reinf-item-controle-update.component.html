@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-reinf-item-controle-heading" jhiTranslate="gsfappelApp.reinfItemControle.home.createOrEditLabel">Create or edit a Reinf Item Controle</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!reinfItemControle.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="reinfItemControle.id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfItemControle.evento" for="field_evento">Evento</label>
+                    <select class="form-control" id="field_evento" name="evento" [(ngModel)]="reinfItemControle.evento" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reinfEventoOption.id === reinfItemControle.evento?.id ? reinfItemControle.evento : reinfEventoOption" *ngFor="let reinfEventoOption of reinfeventos; trackBy: trackReinfEventoById">{{reinfEventoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfItemControle.status" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" [(ngModel)]="reinfItemControle.status" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reinfStatusControleOption.id === reinfItemControle.status?.id ? reinfItemControle.status : reinfStatusControleOption" *ngFor="let reinfStatusControleOption of reinfstatuscontroles; trackBy: trackReinfStatusControleById">{{reinfStatusControleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.reinfItemControle.controle" for="field_controle">Controle</label>
+                    <select class="form-control" id="field_controle" name="controle" [(ngModel)]="reinfItemControle.controle" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reinfControleOption.id === reinfItemControle.controle?.id ? reinfItemControle.controle : reinfControleOption" *ngFor="let reinfControleOption of reinfcontroles; trackBy: trackReinfControleById">{{reinfControleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

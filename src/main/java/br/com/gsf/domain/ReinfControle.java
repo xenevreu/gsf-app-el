@@ -1,5 +1,6 @@
 package br.com.gsf.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -10,6 +11,8 @@ import javax.validation.constraints.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -38,6 +41,9 @@ public class ReinfControle implements Serializable {
     @Column(name = "tp_ambiente", length = 1)
     private String tpAmbiente;
 
+    @OneToMany(mappedBy = "controle")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ReinfItemControle> itens = new HashSet<>();
     @ManyToOne
     @JsonIgnoreProperties("")
     private Empresa empresa;
@@ -92,6 +98,31 @@ public class ReinfControle implements Serializable {
 
     public void setTpAmbiente(String tpAmbiente) {
         this.tpAmbiente = tpAmbiente;
+    }
+
+    public Set<ReinfItemControle> getItens() {
+        return itens;
+    }
+
+    public ReinfControle itens(Set<ReinfItemControle> reinfItemControles) {
+        this.itens = reinfItemControles;
+        return this;
+    }
+
+    public ReinfControle addItens(ReinfItemControle reinfItemControle) {
+        this.itens.add(reinfItemControle);
+        reinfItemControle.setControle(this);
+        return this;
+    }
+
+    public ReinfControle removeItens(ReinfItemControle reinfItemControle) {
+        this.itens.remove(reinfItemControle);
+        reinfItemControle.setControle(null);
+        return this;
+    }
+
+    public void setItens(Set<ReinfItemControle> reinfItemControles) {
+        this.itens = reinfItemControles;
     }
 
     public Empresa getEmpresa() {
