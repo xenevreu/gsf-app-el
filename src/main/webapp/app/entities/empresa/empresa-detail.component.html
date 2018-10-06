@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="empresa">
+            <h2><span jhiTranslate="gsfappelApp.empresa.detail.title">Empresa</span> {{empresa.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gsfappelApp.empresa.nomeEmpresa">Nome Empresa</span></dt>
+                <dd>
+                    <span>{{empresa.nomeEmpresa}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.dtInclusao">Dt Inclusao</span></dt>
+                <dd>
+                    <span>{{empresa.dtInclusao}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.usuInclusao">Usu Inclusao</span></dt>
+                <dd>
+                    <span>{{empresa.usuInclusao}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.dtUltAlteracao">Dt Ult Alteracao</span></dt>
+                <dd>
+                    <span>{{empresa.dtUltAlteracao}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.usuUltAlteracao">Usu Ult Alteracao</span></dt>
+                <dd>
+                    <span>{{empresa.usuUltAlteracao}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.cnpj">Cnpj</span></dt>
+                <dd>
+                    <span>{{empresa.cnpj}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.siglaLa">Sigla La</span></dt>
+                <dd>
+                    <span>{{empresa.siglaLa}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.conteudoCodigo">Conteudo Codigo</span></dt>
+                <dd>
+                    <span>{{empresa.conteudoCodigo}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.idUf">Id Uf</span></dt>
+                <dd>
+                    <span>{{empresa.idUf}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.nomeFantasia">Nome Fantasia</span></dt>
+                <dd>
+                    <span>{{empresa.nomeFantasia}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.idLocalCentral">Id Local Central</span></dt>
+                <dd>
+                    <span>{{empresa.idLocalCentral}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.dsLogo">Ds Logo</span></dt>
+                <dd>
+                    <span>{{empresa.dsLogo}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.caminhoLog">Caminho Log</span></dt>
+                <dd>
+                    <span>{{empresa.caminhoLog}}</span>
+                </dd>
+                <dt><span jhiTranslate="gsfappelApp.empresa.empresaPai">Empresa Pai</span></dt>
+                <dd>
+                    <div *ngIf="empresa.empresaPai">
+                        <a [routerLink]="['/empresa', empresa.empresaPai?.id, 'view']">{{empresa.empresaPai?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/empresa', empresa.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

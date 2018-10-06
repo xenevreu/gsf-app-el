@@ -1,0 +1,24 @@
+entity ReinfControle {
+	empresa String
+}
+
+entity Empresa {
+	nomeEmpresa String required maxlength(120), 
+    dtInclusao Instant,
+    usuInclusao String maxlength(30),
+    dtUltAlteracao Instant,
+    usuUltAlteracao Instant,
+    cnpj String required maxlength(15),
+    siglaLa String maxlength(100),
+    conteudoCodigo String maxlength(1),
+    idUf Long,
+    nomeFantasia String maxlength(100),
+    idLocalCentral Long,
+    dsLogo String maxlength(512),
+    caminhoLog String maxlength(512),
+    
+}
+
+relationship ManyToOne {
+	Empresa {empresaPai} to Empresa
+}

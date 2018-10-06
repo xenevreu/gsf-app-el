@@ -1,0 +1,158 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-empresa-heading" jhiTranslate="gsfappelApp.empresa.home.createOrEditLabel">Create or edit a Empresa</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!empresa.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="empresa.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.nomeEmpresa" for="field_nomeEmpresa">Nome Empresa</label>
+                    <input type="text" class="form-control" name="nomeEmpresa" id="field_nomeEmpresa"
+                        [(ngModel)]="empresa.nomeEmpresa" required maxlength="120"/>
+                    <div [hidden]="!(editForm.controls.nomeEmpresa?.dirty && editForm.controls.nomeEmpresa?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomeEmpresa?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomeEmpresa?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 120 }">
+                        This field cannot be longer than 120 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.dtInclusao" for="field_dtInclusao">Dt Inclusao</label>
+                    <div class="d-flex">
+                        <input id="field_dtInclusao" type="datetime-local" class="form-control" name="dtInclusao" [(ngModel)]="dtInclusao"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.usuInclusao" for="field_usuInclusao">Usu Inclusao</label>
+                    <input type="text" class="form-control" name="usuInclusao" id="field_usuInclusao"
+                        [(ngModel)]="empresa.usuInclusao" maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.usuInclusao?.dirty && editForm.controls.usuInclusao?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.usuInclusao?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.dtUltAlteracao" for="field_dtUltAlteracao">Dt Ult Alteracao</label>
+                    <div class="d-flex">
+                        <input id="field_dtUltAlteracao" type="datetime-local" class="form-control" name="dtUltAlteracao" [(ngModel)]="dtUltAlteracao"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.usuUltAlteracao" for="field_usuUltAlteracao">Usu Ult Alteracao</label>
+                    <div class="d-flex">
+                        <input id="field_usuUltAlteracao" type="datetime-local" class="form-control" name="usuUltAlteracao" [(ngModel)]="usuUltAlteracao"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.cnpj" for="field_cnpj">Cnpj</label>
+                    <input type="text" class="form-control" name="cnpj" id="field_cnpj"
+                        [(ngModel)]="empresa.cnpj" required maxlength="15"/>
+                    <div [hidden]="!(editForm.controls.cnpj?.dirty && editForm.controls.cnpj?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cnpj?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cnpj?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.siglaLa" for="field_siglaLa">Sigla La</label>
+                    <input type="text" class="form-control" name="siglaLa" id="field_siglaLa"
+                        [(ngModel)]="empresa.siglaLa" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.siglaLa?.dirty && editForm.controls.siglaLa?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.siglaLa?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.conteudoCodigo" for="field_conteudoCodigo">Conteudo Codigo</label>
+                    <input type="text" class="form-control" name="conteudoCodigo" id="field_conteudoCodigo"
+                        [(ngModel)]="empresa.conteudoCodigo" maxlength="1"/>
+                    <div [hidden]="!(editForm.controls.conteudoCodigo?.dirty && editForm.controls.conteudoCodigo?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.conteudoCodigo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                        This field cannot be longer than 1 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.idUf" for="field_idUf">Id Uf</label>
+                    <input type="number" class="form-control" name="idUf" id="field_idUf"
+                        [(ngModel)]="empresa.idUf" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.nomeFantasia" for="field_nomeFantasia">Nome Fantasia</label>
+                    <input type="text" class="form-control" name="nomeFantasia" id="field_nomeFantasia"
+                        [(ngModel)]="empresa.nomeFantasia" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.nomeFantasia?.dirty && editForm.controls.nomeFantasia?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomeFantasia?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.idLocalCentral" for="field_idLocalCentral">Id Local Central</label>
+                    <input type="number" class="form-control" name="idLocalCentral" id="field_idLocalCentral"
+                        [(ngModel)]="empresa.idLocalCentral" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.dsLogo" for="field_dsLogo">Ds Logo</label>
+                    <input type="text" class="form-control" name="dsLogo" id="field_dsLogo"
+                        [(ngModel)]="empresa.dsLogo" maxlength="512"/>
+                    <div [hidden]="!(editForm.controls.dsLogo?.dirty && editForm.controls.dsLogo?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.dsLogo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 512 }">
+                        This field cannot be longer than 512 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.caminhoLog" for="field_caminhoLog">Caminho Log</label>
+                    <input type="text" class="form-control" name="caminhoLog" id="field_caminhoLog"
+                        [(ngModel)]="empresa.caminhoLog" maxlength="512"/>
+                    <div [hidden]="!(editForm.controls.caminhoLog?.dirty && editForm.controls.caminhoLog?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.caminhoLog?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 512 }">
+                        This field cannot be longer than 512 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gsfappelApp.empresa.empresaPai" for="field_empresaPai">Empresa Pai</label>
+                    <select class="form-control" id="field_empresaPai" name="empresaPai" [(ngModel)]="empresa.empresaPai" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="empresaOption.id === empresa.empresaPai?.id ? empresa.empresaPai : empresaOption" *ngFor="let empresaOption of empresas; trackBy: trackEmpresaById">{{empresaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{
+    "name": "ReinfControle",
+    "fields": [
+        {
+            "fieldName": "empresa",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181006010129",
+    "entityTableName": "reinf_controle",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
